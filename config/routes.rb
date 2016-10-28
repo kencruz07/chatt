@@ -1,3 +1,17 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
+  root 'chatrooms#index'
+
+  resources :users
+  resources :avatars
+  resources :chatrooms
+  resources :messages
+
+  get :login, :controller => :sessions, :action => :edit
+  patch :login, :controller => :sessions, :action => :update
+  delete :logout, :controller => :sessions, :action => :destroy
+
 end

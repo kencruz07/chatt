@@ -1,0 +1,7 @@
+-# Render nothing
+
+= form_tag :login, :method => :patch do
+  .form-group
+    = text_field_tag :login, nil, :placeholder => 'Username'
+    = password_field_tag :password, nil, :placeholder => 'Password'
+    = submit_tag 'Login'

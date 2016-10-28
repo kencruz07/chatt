@@ -1,0 +1,11 @@
+- @chatrooms.each do |chatroom|
+  %span= chatroom.name
+%span ---------------------------
+%div
+  %h1= @chatroom.name
+
+%div
+  #messages
+    = render partial: 'messages/message', :collection => @chatroom.messages
+    
+  = render partial: 'messages/message_form', :locals => {:message => @message, :chatroom => @chatroom}
