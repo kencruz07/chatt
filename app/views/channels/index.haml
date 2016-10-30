@@ -1,11 +1,30 @@
-#chatroom-page
-  #chatroom-list
-    - @channels.each do |channel|
-      %span= channel.name
+#dashboard
+  #sidebar
+    #app-name chatt.
+    #current-user
+      #online-icon
+      #username= current_user.username.split('@').last
+      = link_to 'logout', :logout, :method => :delete, :id => 'logout'
+    #channel-list
+      #header Channels
+      - @channels.each do |channel|
+        .channel-name= channel.name.insert(1, ' ')
 
-  #chatroom-view
-    #interactive-board
-
-    = render partial: 'messages/message_form', :locals => {:message => @message, :channel => @channel}
-
-  = link_to 'Logout', :logout, :method => :delete
+  #channel-view
+    .channel-details
+      .name= @channel.name
+      .other-details
+        - member_count = @channel.users.uniq.count
+        .members= "#{member_count} #{member_count == 1 ? 'member' : 'members'}"
+        .description= @channel.description
+    .channel-thread
+      - @channel.messages.each do |message|
+        .message
+          .message-dp= message.user.username[1]
+          .message-content-container
+            .message-sender
+              .username= message.user.username.split('@').last
+              .ts= message.updated_at.in_time_zone('Asia/Manila').strftime('%I:%M %p')
+            .message-content= message.content
+    .chat-box-container
+      = render partial: 'messages/message_form', :locals => {:message => @message, :channel => @channel}

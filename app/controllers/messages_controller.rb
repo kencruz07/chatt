@@ -7,7 +7,8 @@ class MessagesController < ApplicationController
     if message.save
       ActionCable.server.broadcast 'messages',
         :message => message.content,
-        :user => message.user
+        :user => message.user,
+        :ts => message.updated_at.in_time_zone('Asia/Manila').strftime('%I:%M %p')
       head :ok
     else
       redirect_to channels_path

@@ -1,5 +1,5 @@
 = form_for message, :remote => true, :authenticity_token => true do |f|
-  = f.text_field :content, :id => 'chat-box', :data => {:textarea => 'message'}
+  = f.text_field :content, :class => 'chat-box', :autocomplete => 'off', :placeholder => "Message #{channel.name}", :data => {:textarea => 'message'}
 
   = f.hidden_field :channel_id, :value => channel.id
-  = f.submit 'send', :data => {:send => 'message'}
+  = f.submit 'send', :class => 'chat-box-submit', :data => {:send => 'message'}

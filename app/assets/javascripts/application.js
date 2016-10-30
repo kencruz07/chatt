@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $('.channel-thread').scrollTop($('.channel-thread')[0].scrollHeight);
+});
