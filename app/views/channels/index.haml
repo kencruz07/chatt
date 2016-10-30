@@ -5,9 +5,6 @@
 
   #chatroom-view
     #interactive-board
-      - @channel.users.uniq.each do |user|
-        .sprite{:data => {:user_id => user.id, :x_pos => user.avatar.x_pos, :y_pos => user.avatar.y_pos}}
-          .chat-bubble
 
     = render partial: 'messages/message_form', :locals => {:message => @message, :channel => @channel}
 

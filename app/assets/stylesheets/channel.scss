@@ -1,0 +1,25 @@
+#chatroom-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #chatroom-list {
+    width: 20%;
+    height: 100%;
+    background-color: #567E3A;
+  }
+
+  #chatroom-view {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    #interactive-board {
+      height: 600px;
+      width: 600px;
+    }
+  }
+}
