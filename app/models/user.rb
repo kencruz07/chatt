@@ -13,9 +13,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_one :avatar, :dependent => :destroy
-
   has_many :messages, :dependent => :destroy
-  has_many :chatrooms, :through => :messages
-  
+  has_many :channels, :through => :messages
+
 end

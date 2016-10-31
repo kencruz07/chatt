@@ -1,7 +1,6 @@
--# Render nothing
-
-= form_tag :login, :method => :patch do
-  .form-group
-    = text_field_tag :login, nil, :placeholder => 'Username'
-    = password_field_tag :password, nil, :placeholder => 'Password'
-    = submit_tag 'Login'
+#login-page
+  #app-name chatt.
+  = form_tag :login, :method => :patch, :id => 'login-form' do
+    = text_field_tag :login, nil, :class => 'login-page-input', :placeholder => '@username', :autocomplete => 'off'
+    = password_field_tag :password, nil, :class => 'login-page-input', :placeholder => 'password', :autocomplete => 'off'
+    = submit_tag 'Login', :class => 'login-button'

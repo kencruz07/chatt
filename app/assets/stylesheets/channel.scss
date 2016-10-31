@@ -1,0 +1,229 @@
+#dashboard {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  justify-content: flex-start;
+  align-items: center;
+
+  #sidebar {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    width: 200px;
+    height: 100%;
+    background-color: #3a607e;
+
+    #app-name {
+      color: white;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 1.5rem;
+    }
+
+    #current-user {
+      display: flex;
+      color: #c2c2c2;
+      font-size: 0.8rem;
+
+      align-items: center;
+
+      #online-icon {
+        display: flex;
+        margin-right: 5px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #75e697;
+      }
+
+      #username:after {
+        margin: 0 5px;
+        content: '|';
+      }
+
+      #logout {
+        margin-top: 2.5px;
+        color: #c2c2c2;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 0.6rem;
+      }
+    }
+
+    #channel-list {
+      margin-top: 20px;
+
+      #header {
+        color: #c2c2c2;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 0.75rem;
+      }
+
+      .channel-name {
+        margin-top: 5px;
+        color: white;
+      }
+    }
+  }
+
+  #channel-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    flex: 1;
+
+    .channel-details {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      padding: 0 30px;
+      width: 100%;
+      height: 100px;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #f0f0f0;
+      background-color: white;
+
+      justify-content: center;
+
+      .name {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      .other-details {
+        display: flex;
+        color: #797979;
+        font-size: 0.75rem;
+
+        .members:after {
+          margin: 0 5px;
+          content: '|';
+        }
+      }
+    }
+
+    .channel-thread {
+      overflow-y: scroll;
+      width: 100%;
+      height: 100%;
+
+      .message {
+        display: flex;
+        padding: 10px 30px;
+
+        justify-content: flex-start;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+
+        .message-dp {
+          display: flex;
+          margin-right: 10px;
+          width: 35px;
+          height: 35px;
+          border-width: 1px;
+          border-style: solid;
+          border-radius: 3px;
+          text-transform: uppercase;
+          font-weight: 300;
+          font-size: 1rem;
+
+          justify-content: center;
+          align-items: center;
+        }
+
+        .message-content-container {
+          flex: 1;
+
+          .message-sender {
+            display: flex;
+
+            align-items: flex-end;
+
+            .username {
+              margin-right: 8px;
+              font-weight: 700;
+            }
+
+            .ts {
+              margin-bottom: 1px;
+              color: #a2a2a2;
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chat-box-container {
+      display: flex;
+      box-sizing: border-box;
+      padding: 0 30px;
+      width: 100%;
+      height: 100px;
+      background-color: white;
+
+      align-items: center;
+
+      form {
+        width: 100%;
+      }
+
+      .chat-box {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        height: 35px;
+        outline: none;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #a2a2a2;
+        border-radius: 5px;
+      }
+
+      .chat-box-submit {
+        display: none;
+      }
+
+      ::-webkit-input-placeholder {
+        font-weight: 300;
+        font-size: 0.85rem;
+        font-family: 'Lato', sans-serif;
+      }
+
+      :-moz-placeholder {
+        font-weight: 300; /* Firefox 18- */
+        font-size: 0.85rem;
+        font-family: 'Lato', sans-serif;
+      }
+
+      ::-moz-placeholder {
+        font-weight: 300;  /* Firefox 19+ */
+        font-size: 0.85rem;
+        font-family: 'Lato', sans-serif;
+      }
+
+      :-ms-input-placeholder {
+        font-weight: 300;
+        font-size: 0.85rem;
+        font-family: 'Lato', sans-serif;
+      }
+
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+      }
+    }
+  }
+}

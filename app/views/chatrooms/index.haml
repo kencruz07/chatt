@@ -1,11 +1,14 @@
-- @chatrooms.each do |chatroom|
-  %span= chatroom.name
-%span ---------------------------
-%div
-  %h1= @chatroom.name
+#chatroom-page
+  #chatroom-list
+    - @channels.each do |channel|
+      %span= channel.name
 
-%div
-  #messages
-    = render partial: 'messages/message', :collection => @chatroom.messages
-    
-  = render partial: 'messages/message_form', :locals => {:message => @message, :chatroom => @chatroom}
+  #chatroom-view
+    #interactive-board
+      - @channel.users.uniq.each do |user|
+        .sprite{:data => {:user_id => user.id, :x_pos => user.avatar.x_pos, :y_pos => user.avatar.y_pos}}
+          .chat-bubble
+
+    = render partial: 'messages/message_form', :locals => {:message => @message, :channel => @channel}
+
+  = link_to 'Logout', :logout, :method => :delete

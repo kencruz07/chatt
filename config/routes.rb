@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
 
-  root 'chatrooms#index'
+  root 'channels#index'
 
   resources :users
-  resources :avatars
-  resources :chatrooms
+  resources :channels
   resources :messages
 
   get :login, :controller => :sessions, :action => :edit
