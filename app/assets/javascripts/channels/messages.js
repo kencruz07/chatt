@@ -2,6 +2,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
     $('.channel-thread').append(this.renderMessage(data));
     $('.channel-thread').scrollTop($('.channel-thread')[0].scrollHeight);
+    $('.chat-box').val('');
     return true;
   },
 
