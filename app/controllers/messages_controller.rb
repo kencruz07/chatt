@@ -8,11 +8,18 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast 'messages',
         :message => message.content,
         :user => message.user,
-        :ts => message.updated_at.in_time_zone('Asia/Manila').strftime('%I:%M %p')
+        :ts => message.updated_at.in_time_zone('Asia/Manila').strftime('%I:%M %p'),
+        :in_channel => message.channel.users.uniq.count
       head :ok
     else
       redirect_to channels_path
     end
+  end
+
+  def user_typing
+    ActionCable.server.broadcast 'keypresses',
+      :user => current_user
+    head :ok
   end
 
   private

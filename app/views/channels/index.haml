@@ -1,4 +1,4 @@
-#dashboard
+#dashboard{:data => {:current_user_id => current_user.id}}
   #sidebar
     #app-name chatt.
     #current-user
@@ -15,8 +15,11 @@
       .name= @channel.name
       .other-details
         - member_count = @channel.users.uniq.count
-        .members= "#{member_count} #{member_count == 1 ? 'member' : 'members'}"
+        .members
+          %span.member-count= member_count
+          %span.member-text= "#{member_count == 1 ? 'member' : 'members'}"
         .description= @channel.description
+
     .channel-thread
       - @channel.messages.each do |message|
         .message
@@ -26,5 +29,7 @@
               .username= message.user.username.split('@').last
               .ts= message.updated_at.in_time_zone('Asia/Manila').strftime('%I:%M %p')
             .message-content= message.content
+
     .chat-box-container
       = render partial: 'messages/message_form', :locals => {:message => @message, :channel => @channel}
+      .typing-indicator

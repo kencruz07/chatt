@@ -17,4 +17,8 @@
 
 $(document).ready(function(){
   $('.channel-thread').scrollTop($('.channel-thread')[0].scrollHeight);
+
+  $('.chat-box').on('keypress', function(e){
+    $.post('http://192.168.1.70:3000/messages/user_typing');
+  });
 });

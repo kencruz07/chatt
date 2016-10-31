@@ -2,7 +2,11 @@
 %html
   %head
     %title Chatt
-    
+
+    :javascript
+      window.module = undefined;
+      window.require = undefined;
+
     = action_cable_meta_tag
     = csrf_meta_tags
 
